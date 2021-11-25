@@ -9,6 +9,7 @@ class Discord extends Client {
         super(options);
 
         this.commands = new Collection();
+        this.aliases = new Collection();
 
         this.handler = new Handler(this);
         
