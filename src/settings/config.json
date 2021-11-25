@@ -2,7 +2,7 @@
     "token": "",
     "prefix": "!",
     "handler": {
-        "commands": "./src/commands/**/**/*",
+        "commands": "./src/commands/core/**/**/*",
         "events": "./src/events/core/**/**/*.js"
     }
 }

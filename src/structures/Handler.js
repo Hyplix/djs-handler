@@ -1,5 +1,6 @@
 const Client = require("./Client");
 const Event = require("../events/Event");
+const Command = require("../commands/Command");
 
 const glob = require("glob");
 const path = require("path");
@@ -22,13 +23,12 @@ class Handler {
             const file = require(path.resolve(events[i]));
 
             if (!checkClass(file)) {
-                return console.log("Not exports a class");
+                return;
             };
 
             const event = new file(this.client);
 
             if (!(event instanceof Event)) {
-                console.log("henlo")
                 return;
             };
 
@@ -38,6 +38,36 @@ class Handler {
                         event.run(...args)
                     }
                 );
+            };
+        };
+    };
+
+    setCommands() {
+
+        const commands = glob.sync(this.client.settings.handler.commands);
+
+        for (let i = 0; i < commands.length; i++) {
+
+            const file = require(path.resolve(commands[i]));
+
+            if (!checkClass(file)) {
+                return;
+            };
+
+            const command = new file(this.client);
+
+            if (!(command instanceof Command)) {
+                return;
+            };
+
+            if (command.name) {
+                this.client.commands.set(command.name, command);
+            };
+
+            if (command.aliases && Array.isArray(command.aliases)) {
+                command.aliases.forEach((x) => {
+                    this.client.aliases.set(x, command);
+                });
             };
         };
     };
