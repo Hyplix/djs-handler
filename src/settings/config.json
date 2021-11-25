@@ -1,0 +1,8 @@
+{
+    "token": "",
+    "prefix": "!",
+    "handler": {
+        "commands": "./src/commands/**/**/*",
+        "events": "./src/events/core/**/**/*.js"
+    }
+}

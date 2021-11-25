@@ -1,0 +1,15 @@
+{
+  "name": "djs-handler",
+  "version": "1.0.0",
+  "description": "A simple Discord bot template which uses discord.js.",
+  "main": "src/index.js",
+  "repository": "https://github.com/Hyplix/djs-handler.git",
+  "author": "Hyplix <Colderry>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "discord.js": "^13.3.1",
+    "dotenv": "^10.0.0",
+    "glob": "^7.2.0"
+  }
+}
