@@ -4,7 +4,10 @@ const Discord = require("../structures/Client");
 const interface = {
     name: "",
     description: "",
-    aliases: []
+    aliases: [],
+    category: "",
+    cooldown: 5,
+    developer: false
 };
 
 class Command {
@@ -18,6 +21,9 @@ class Command {
         this.name = opt.name;
         this.description = opt.description;
         this.aliases = opt.aliases;
+        this.category = opt.category;
+        this.cooldown = opt.cooldown;
+        this.developer = opt.developer;
     };
 
     /**

@@ -1,5 +1,7 @@
 const { Client, Collection } = require("discord.js");
+
 const Handler = require("./Handler");
+const Util = require("./Util");
 
 class Discord extends Client {
     /**
@@ -12,6 +14,7 @@ class Discord extends Client {
         this.aliases = new Collection();
 
         this.handler = new Handler(this);
+        this.util = new Util(this);
         
         this.settings = require("../settings/config.json");
     };

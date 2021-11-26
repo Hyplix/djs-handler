@@ -2,7 +2,10 @@
     "token": "",
     "prefix": "!",
     "handler": {
-        "commands": "./src/commands/core/**/**/*",
+        "commands": "./src/commands/core/**/**/*.js",
         "events": "./src/events/core/**/**/*.js"
-    }
+    },
+    "developerIds": [
+        "892091860586217522"
+    ]
 }
