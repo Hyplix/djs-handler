@@ -1,5 +1,7 @@
 const { Message } = require("discord.js");
+
 const Event = require("../../Event");
+const CMD = require("../../../commands/Command");
 
 class Command extends Event {
     constructor(client) {
@@ -13,7 +15,7 @@ class Command extends Event {
      * The discord.js Message
      * @param {Message} message  
      */
-    run (message) {
+    run(message) {
 
         if (message.author.bot) {
             return;
@@ -34,11 +36,21 @@ class Command extends Event {
 
         /**
          * [Command]
-         * @type {Command}
+         * @type {CMD}
          */
         const command = this.client.commands.get(commandName) || this.client.aliases.get(commandName);
 
         if (command) {
+
+            // ------------[Check if the command is developer true]-------------------
+            if (command.developer && command.developer === true) {
+
+                if (!this.client.util.checkifDev(message.author.id)) {
+                    return;
+                };
+
+            };
+
             command.run(message, argument);
         };
     };
