@@ -10,13 +10,39 @@ class Discord extends Client {
     constructor(options) {
         super(options);
 
+        /**
+         * The djs collection for the commands
+         * @type {Collection}
+         */
         this.commands = new Collection();
+
+        /**
+         * The djs collection for the aliases
+         * @type {Collection}
+         */
         this.aliases = new Collection();
+        
+        /**
+         * The djs collection for the slashes
+         * @type {Collection}
+         */
         this.slashes = new Collection();
 
+        /**
+         * The handler class for the client
+         * @type {Handler}
+         */
         this.handler = new Handler(this);
+
+        /**
+         * The util class for the client
+         * @type {Util}
+         */
         this.util = new Util(this);
         
+        /**
+         * The setting/config file
+         */
         this.settings = require("../settings/config.json");
     };
 
