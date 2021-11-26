@@ -7,7 +7,11 @@ const interface = {
     aliases: [],
     category: "",
     cooldown: 5,
-    developer: false
+    developer: false,
+    /**
+     * @type {import("discord.js").ApplicationCommandDataResolvable | {enableDM?: boolean}}
+     */
+    slash: []
 };
 
 class Command {
@@ -24,6 +28,7 @@ class Command {
         this.category = opt.category;
         this.cooldown = opt.cooldown;
         this.developer = opt.developer;
+        this.slash = opt.slash;
     };
 
     /**
@@ -33,6 +38,10 @@ class Command {
      * @returns 
      */
     run (message, args) {
+        return;
+    };
+
+    interact (interaction) {
         return;
     };
 };
