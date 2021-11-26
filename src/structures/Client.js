@@ -12,6 +12,7 @@ class Discord extends Client {
 
         this.commands = new Collection();
         this.aliases = new Collection();
+        this.slashes = new Collection();
 
         this.handler = new Handler(this);
         this.util = new Util(this);

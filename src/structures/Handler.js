@@ -71,6 +71,40 @@ class Handler {
             };
         };
     };
+
+    setSlashes() {
+
+        const commands = glob.sync(this.client.settings.handler.commands);
+        const array = [];
+
+        for (let i = 0; i < commands.length; i++) {
+
+            const file = require(path.resolve(commands[i]));
+
+            if (!checkClass(file)) {
+                return;
+            };
+
+            const command = new file(this.client);
+
+            if (!(command instanceof Command)) {
+                return;
+            };
+
+            if (!command.slash.name && !command.slash.description) {
+                return;
+            };
+
+            array.push(command.slash);
+            this.client.slashes.set(command.slash.name, command);
+        };
+
+        // For Development
+        const guild = this.client.guilds.cache.get(this.client.settings.guildId);
+        if (guild) {
+            guild.commands.set(array);
+        };
+    };
 };
 
 /**
