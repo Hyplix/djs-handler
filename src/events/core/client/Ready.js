@@ -10,6 +10,7 @@ class Ready extends Event {
     
     run () {
         console.log(this.client.user.username + " is ready");
+        this.client.handler.setSlashes();
     };
 };
 
