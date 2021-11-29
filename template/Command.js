@@ -5,7 +5,14 @@ class Name extends Command {
         super(client, {
             name: "",
             description: "",
-            aliases: []
+            aliases: [],
+            category: "",
+            cooldown: 0,
+            slash: {
+                name: "",
+                description: "",
+                enableDM: false
+            }
         });
     };
 
