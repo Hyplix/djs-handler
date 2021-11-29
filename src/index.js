@@ -5,7 +5,10 @@ const client = new Discord({
     intents: [
         "GUILDS",
         "GUILD_MESSAGES"
-    ]
+    ],
+    allowedMentions: {
+        parse: ["everyone"]
+    }
 });
 
 // Execute the handlers
