@@ -1,6 +1,7 @@
 const { Client, Collection } = require("discord.js");
 
 const Handler = require("./Handler");
+const Cooldown = require("./Cooldown");
 const Util = require("./Util");
 
 class Discord extends Client {
@@ -27,6 +28,12 @@ class Discord extends Client {
          * @type {Collection}
          */
         this.slashes = new Collection();
+
+        /**
+         * The cooldown class for the commands
+         * @type {Cooldown}
+         */
+        this.cooldown = new Cooldown();
 
         /**
          * The handler class for the client

@@ -42,7 +42,7 @@ class Command extends Event {
 
         if (command) {
 
-            // ------------[Check if the command is developer true]-------------------
+            // For Developer only command
             if (command.developer && command.developer === true) {
 
                 if (!this.client.util.checkifDev(message.author.id)) {
@@ -51,6 +51,22 @@ class Command extends Event {
 
             };
 
+            // For cooldown of the comamand
+            const cooldown = this.client.cooldown.get(message.author.id, command);
+
+            if (cooldown) {
+                const timeRemain = this.client.cooldown.getRemaining(message.author.id, command, true);
+
+                return message.reply({
+                    content: `**${message.author.username}** | Command is on \`${timeRemain}secs\` cooldown.`
+                }).catch(() => {
+                    return;
+                });
+            };
+
+            this.client.cooldown.add(message.author.id, command);
+            
+            // Execute the command
             command.run(message, argument);
         };
     };
