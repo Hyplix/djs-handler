@@ -11,7 +11,7 @@ const interface = {
     /**
      * @type {import("discord.js").ApplicationCommandDataResolvable | {enableDM?: boolean}}
      */
-    slash: []
+    slash: {}
 };
 
 class Command {
@@ -23,12 +23,12 @@ class Command {
     constructor(client, opt) {
         this.client = client;
         this.name = opt.name;
-        this.description = opt.description;
-        this.aliases = opt.aliases;
-        this.category = opt.category;
-        this.cooldown = opt.cooldown;
-        this.developer = opt.developer;
-        this.slash = opt.slash;
+        this.description = opt.description || "";
+        this.aliases = opt.aliases || [];
+        this.category = opt.category || "";
+        this.cooldown = opt.cooldown || 0;
+        this.developer = opt.developer || false;
+        this.slash = opt.slash || { name: null, description: null, enableDM: false };
     };
 
     /**
