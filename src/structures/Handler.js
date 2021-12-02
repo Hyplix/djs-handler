@@ -91,12 +91,10 @@ class Handler {
                 return;
             };
 
-            if (!command.slash.name && !command.slash.description) {
-                return;
+            if (command.slash.name && command.slash.description) {
+                array.push(command.slash);
+                this.client.slashes.set(command.slash.name, command);
             };
-
-            array.push(command.slash);
-            this.client.slashes.set(command.slash.name, command);
         };
 
         // For Development
